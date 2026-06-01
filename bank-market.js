@@ -85,7 +85,7 @@ function getBankPriceByCode(code) {
 const BANK_STOCKS = [
   // ── Bank BUMN ────────────────────────────────────────
   { ticker: 'BBRI.JK', code: 'BRI',     name: 'Bank BRI',              category: 'BUMN',       color: '#F44336', basePrice: 4200 },
-  { ticker: 'BBCA.JK', code: 'BCA',     name: 'Bank Central Asia',     category: 'BUMN',       color: '#1565C0', basePrice: 9350 },
+  { ticker: 'BBCA.JK', code: 'BCA',     name: 'Bank Central Asia',     category: 'Swasta',       color: '#1565C0', basePrice: 9350 },
   { ticker: 'BMRI.JK', code: 'MANDIRI', name: 'Bank Mandiri',          category: 'BUMN',       color: '#F9A825', basePrice: 6800 },
   { ticker: 'BBNI.JK', code: 'BNI',     name: 'Bank BNI',              category: 'BUMN',       color: '#FF8F00', basePrice: 5300 },
   { ticker: 'BBTL.JK', code: 'BTN',     name: 'Bank BTN',              category: 'BUMN',       color: '#2E7D32', basePrice: 1340 },
@@ -1017,9 +1017,9 @@ function _renderBankChart() {
   const rawHi  = Math.max(...candles.map(c => c.h));
   const rawLo  = Math.min(...candles.map(c => c.l));
   const midPrice = (rawHi + rawLo) / 2;
-  const minRange = midPrice * 0.008; // minimal 0.8% range agar chart selalu di tengah
-  const hiMax = Math.max(rawHi * 1.001, midPrice + minRange);
-  const loMin = Math.min(rawLo * 0.999, midPrice - minRange);
+  const minRange = midPrice * 0.012, 5); // minimal 0.8% range agar chart selalu di tengah
+  const hiMax = Math.max(rawHi * 1.002, midPrice + minRange);
+  const loMin = Math.min(rawLo * 0.998, midPrice - minRange);
 
   function toX(i)   { return PAD_L + (i + 0.5) * barW; }
   function toY(v)   { return PAD_T + MAIN_H - ((v - loMin) / (hiMax - loMin)) * MAIN_H; }
