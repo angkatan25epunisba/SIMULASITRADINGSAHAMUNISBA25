@@ -1017,7 +1017,7 @@ function _renderBankChart() {
   const rawHi  = Math.max(...candles.map(c => c.h));
   const rawLo  = Math.min(...candles.map(c => c.l));
   const midPrice = (rawHi + rawLo) / 2;
-  const minRange = midPrice * 0.012, 5); // minimal 0.8% range agar chart selalu di tengah
+  const minRange = midPrice * 0.012, 5; // minimal 0.8% range agar chart selalu di tengah
   const hiMax = Math.max(rawHi * 1.002, midPrice + minRange);
   const loMin = Math.min(rawLo * 0.998, midPrice - minRange);
 
